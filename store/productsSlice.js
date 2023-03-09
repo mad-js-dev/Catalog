@@ -2,8 +2,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 // Slice
-const serverAdress = (window.location.hostname== "localhost") ? "http://localhost:80": window.location.hostname;
-console.log(window.location.hostname)
+const serverAdress = (window.location.hostname== "localhost") ? "http://localhost:80": "";
+console.log(serverAdress)
 
 export const readProducts = createAsyncThunk('read/products', async (dispatch, getState) => {
   console.log('Read all products store call', dispatch)
@@ -43,7 +43,7 @@ const productsSlice = createSlice({
   initialState: {
     products: [],
     filter: {
-      state: 1,
+      state: 2,
       condition: -1,
       category: -1,
       subcategory: -1,

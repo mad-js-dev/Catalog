@@ -66,11 +66,6 @@ export default function ProductDetails(props) {
         }
 
         setProduct(newValue)
-        /*
-        dispatch(updateProduct({_id: props.id, product: newValue})).then((res) => {
-            console.log("Data updated", res)
-        })
-        */
         props.onChange(newValue)
     };
 
