@@ -39,13 +39,13 @@
   <h3 align="center">Shop inventory v.1</h3>
 
   <p align="center">
-    A small catalog / inventory app for a small fashion shop.
-    <!--
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    A simple catalog / inventory app for a fashion shop.
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <!--
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
@@ -105,42 +105,21 @@ Use the `BLANK_README.md` to get started.
 
 
 ### Built With
-<!--
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
--->
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 * [![React-Native][React-Native]][React-Native-url]
 * [![Expo][Expo]][Expo-url]
 * [![Redux][Redux]][Redux-url]
-<!--
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
--->
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Nodejs (V14 tested)
 * MongoDb (Create a db named 'catalog')
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
@@ -151,9 +130,9 @@ _Below is an example of how you can instruct your audience on installing and set
    cd Catalog
    npm install
    ```
-<!--
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
--->
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -181,15 +160,13 @@ _Below is an example of how you can instruct your audience on installing and set
 
 - [x] Rest API
 - [x] Expo desktop alpha
-- [ ] Mobile app + picture upload
+- [ ] Mobile app + picture upload (In development)
 - [ ] Create password module
 - [ ] Add export data feature
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING 
 ## Contributing
@@ -211,7 +188,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under "no license". Only for testing purposes. Copy, distribute, or modification are forbidden for other uses.
+Distributed under "no license". Only for testing purposes. Copy, distribute, or modification are forbidden for any other use.
 <!--
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 -->
