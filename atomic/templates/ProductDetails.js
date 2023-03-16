@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     productsDetails: {
         display: "flex",
         backgroundColor: "#FFF",
-        height: "75vh",  
+        height: "86vh",  
         paddingVertical: "100px",
     },
     productsDetails_empty: {
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
         display: "flex", 
         flexWrap: "wrap",
         flexDirection: "column", 
-        height: "75vh"
+        height: "80vh"
     },
     pictureContainer: {
         height: 400,
@@ -333,7 +333,8 @@ const styles = StyleSheet.create({
         order: 1,
     },
     paymentContainer: {
-        width: 450,
+        width: "100%",
+        maxWidth: 450,
         order: "1",
         order: 2
     },

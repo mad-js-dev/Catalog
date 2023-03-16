@@ -1,6 +1,7 @@
 import { React, Component, useState, useEffect } from "react";
-import { StyleSheet, FlatList, SafeAreaView, Pressable, Image, Text } from "react-native";
+import { StyleSheet, FlatList, SafeAreaView, Pressable, Image, Text, View} from "react-native";
 import { useSelector , useDispatch } from "react-redux";
+import Ionicons from '@expo/vector-icons/Ionicons';
 export default function ProductsList (props) {
     let settings = useSelector(state => state.productsList.settings)
 
@@ -42,15 +43,35 @@ export default function ProductsList (props) {
         );
     }
 
+    const Content = () => {
+        let result;
+        console.log(props.list)
+        if(props.list.length == 0) {
+            result = (
+                <View style={[styles.productList__container, styles.productList__container_empty]}>
+                    <View style={styles.productList__container_noResults}>
+                        <Ionicons name="md-search-sharp" size={56} color="#555"/>
+                        <Text>No products found</Text>
+                    </View>
+                </View>
+            )
+        } else {
+            result = (
+                <FlatList
+                    data={props.list}
+                    renderItem={renderItem}
+                    keyExtractor={item => item._id}
+                    contentContainerStyle={styles.productList__container}
+                />
+            )
+        }
+        console.log(result)
+        return result
+    }
+
     return (
         <SafeAreaView style={styles.productList}>
-            <FlatList
-                data={props.list}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-                contentContainerStyle={styles.productList__container}
-
-            />
+             <Content />
         </SafeAreaView>
     )
 }
@@ -64,11 +85,19 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         height: "100%",
     },
+    productList__container_empty: {
+        marginTop: 50,
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+    },
+    productList__container_noResults: {
+        color: "#333",
+    },
     listItem: {
         display: "flex",
         flexDirection: "row",
         alignItems: "end",
-        marginTop: 24,
         position: "relative",
         border: "4px solid rgba(0,0,0,0)",
     },
@@ -78,8 +107,8 @@ const styles = StyleSheet.create({
     },
     listItem__image: {
         display: "block",
-        width: 330,
-        height: 220
+        width: "100%",
+        height: 200
     },
     listItem__contentWrapper: {
         position: "absolute",
@@ -89,10 +118,10 @@ const styles = StyleSheet.create({
     listItem__text: {
         flexBasis: "100%",
         paddingLeft: 30,
+        paddingRight: 5,
         fontSize: 24,
         fontWeight: "bold",
         display: "block",
-        marginRight: 10,
         textShadow: "0px 0px 5px #000",
         color: "#FFF",
         textAlign: "right"

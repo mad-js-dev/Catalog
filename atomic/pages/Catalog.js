@@ -40,17 +40,18 @@ export default function Catalog () {
 
     const filterProducts = () => {
         let result = [];
-        //console.log(filter)
-        if(filter != {}) {
-            let filtersCount = 0
-            let filters = []
-            let result = []
+        let filtersCount = 0
+        let filters = []
+        
+        console.log(filter)
+        
+        //remove unselected filters
+        Object.keys(filter).map((key) => { 
+            if(filter[key] != -1) filters.push({key, value: filter[key]})
+        } );
 
-            //remove unselected filters
-            Object.keys(filter).map((key) => { 
-                if(filter[key] != -1) filters.push({key, value: filter[key]})
-            } );
-            console.log(filters, products)
+        console.log(filters, products)
+        if(filters.length > 0) {
             Object.keys(products).filter( (key) => {
                 let amountFiltered = 0;
                 Object.keys(filters).map( (filterKey) => {
@@ -61,27 +62,24 @@ export default function Catalog () {
                     }  
                 })
             })
-
-            //result = result.sort((a,b)=>a.lastEdit+b.lastEdit);
-
+            
             console.log(result)
-            if(result.length == 0) {
-                result = [...products]
-                result = result.sort((a,b)=>a.lastEdit+b.lastEdit);
-            } else {
-                result = result.sort((a,b)=>a.lastEdit+b.lastEdit);
+            if(result.length != 0) {
+                result = result.sort((a,b)=>b.lastEdit-a.lastEdit);
             }
+            
             console.log(result)
             setFilterList(result);
         } else {
             result = [...products]
-            result = result.sort((a,b)=>a.lastEdit+b.lastEdit);
+            result = result.sort((a,b)=>b.lastEdit-a.lastEdit);
             setFilterList(result);
         }
     }
 
     useEffect(()=>{
         filterProducts();
+        console.log('fu');
     }, [filter, products])
 
     const Menu  = () => {
@@ -112,17 +110,6 @@ export default function Catalog () {
                         style={styles.catalogMenu__buttonText}>
                             Remove product
                         </Text>
-                        <Ionicons 
-                            style={styles.catalogMenu__buttonIcon}
-                            name="trash-bin"
-                            size={24} 
-                        />
-                    </Pressable>
-                    <Pressable 
-                        style={[styles.catalogMenu__button, styles.catalogMenu__button_noText]}
-                        onPress={() => console.log("click")} 
-                        title={ "foo" }
-                    >
                         <Ionicons 
                             style={styles.catalogMenu__buttonIcon}
                             name="trash-bin"
@@ -183,8 +170,8 @@ export default function Catalog () {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#CCC",
-        height: "82vh", 
-        width: 394,
+        height: "86vh", 
+        width: 450,
         padding: 20,
     },
     catalogContent: {
@@ -196,6 +183,7 @@ export default function Catalog () {
     },
     catalogFilters__list: {
         flexBasis: "auto",
+        width: 320,
     },
     catalogMenu: { 
         height: 70,

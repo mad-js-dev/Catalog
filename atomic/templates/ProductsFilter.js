@@ -6,16 +6,10 @@ import { fetchSchema } from '../../store/productsSlice'
 import { useIsFocused } from '@react-navigation/native'
 
 import Input from "../molecules/Input";
+import Accordion from "../molecules/Accordion";
 
-export default function ProductsFilter(props) { 
-    const dispatch = useDispatch();
-    const isFocused = useIsFocused()
-    
+export default function ProductsFilter(props) {    
     let settings = useSelector(state => state.productsList.settings)
-
-    const [schema, setSchema] = useState([]);
-
-    const [ displayFilters, setDisplayFilters ] = useState(false);
     const [ subcategories, setSubcategories ] = useState([]);
 
     const updateFilter = (change, prop) => {
@@ -33,29 +27,16 @@ export default function ProductsFilter(props) {
 
     const updateSubcategories = (change) => {
         setSubcategories((change == "-1") ? [] : settings[1].list[change].list)
-        
     };
-
-    //Propagate initial props.filter
-    useEffect(()=>{
-        console.log(props.filter)
-        props.onChange(props.filter);
-    }, [isFocused])
 
     return (
         <div style={styles.productsFilter}>
             <div style={styles.productsFilter__filterWrapper}>
-                <Pressable  style={styles.productsFilter__filtersHeader} onPress={() => setDisplayFilters(!displayFilters)}>
-                    <Ionicons 
-                        name="filter"
-                        size={24} 
-                        />
-                    <Text>{(displayFilters)?"Hide":"Show"} filters</Text>
-                </Pressable>
-                <div style={ (!displayFilters) ? 
-                    {...styles.productsFilter__filtersContent, ...styles.productsFilter__filtersContent_hidden} : 
-                    styles.productsFilter__filtersContent
-                }>
+                <Accordion 
+                        title="Filters" 
+                        headerIcon="filter"
+                        display={false}
+                        content={(<>
                     <Input 
                         type="select" 
                         label="Category"
@@ -127,7 +108,7 @@ export default function ProductsFilter(props) {
                         halfWidth={true} 
                         onChange={(change) => updateFilter(change - 1, "size")}
                     />
-                </div>
+                    </>)} />
             </div>
         </div>
     )

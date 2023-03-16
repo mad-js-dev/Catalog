@@ -42,10 +42,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexWrap: "wrap",
     gap: 10,
-    minHeight: 300,
+    height: "100%",
     overflow: "hidden",
-    paddingLeft: 10,
-    paddingRight: 10,
+    margin: 10,
 },
 accordion__content_hidden: {
     minHeight: 0,
