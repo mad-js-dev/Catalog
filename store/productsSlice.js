@@ -2,13 +2,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 // Slice
-const serverAdress = (window.location.hostname== "localhost") ? "http://localhost:80": "";
+let testServer = false
+const serverAdress = (testServer) ? "http://localhost:80": "http://192.168.1.130:80";
 console.log(serverAdress)
 
 export const readProducts = createAsyncThunk('read/products', async (dispatch, getState) => {
   console.log('Read all products store call', dispatch)
   return await axios.get(serverAdress+"/api/getProducts")
   .then((res) => {
+    console.log(res)
       return res.data
   });
 });
@@ -26,6 +28,7 @@ export const updateProduct = createAsyncThunk('update/product', async (dispatch,
   console.log('Update product store call', dispatch)
   return await axios.post(serverAdress+"/api/updateProduct", dispatch)
     .then((res) => {
+      console.log(res.data)
       return res.data
     });
 });
@@ -151,7 +154,8 @@ const productsSlice = createSlice({
           {_id:7, name: "Louis Vuitton", value: 7},
           {_id:8, name: "Prada", value: 8},
           {_id:9, name: "Yves Saint Laurent", value: 9},
-          {_id:10, name: "Rayban", value: 10}
+          {_id:10, name: "Rayban", value: 10},
+          {_id:11, name: "Other", value: 11}
         ] 
       },
       { 
@@ -277,7 +281,39 @@ const productsSlice = createSlice({
       { _id: 15, propertyType: "date", label: "Provider pay date", name: "paymentDate"},
       { _id: 16, propertyType: "text", label: "Location", name: "paymentLocation"},
       { _id: 17, propertyType: "text", label: "Invoice no. / Name", name: "paymentInvoice"},
-      { _id: 18, propertyType: "textArea", label: "Description", name: "description"}
+      { _id: 18, propertyType: "textArea", label: "Description", name: "description"},
+      { 
+        _id: 19,
+        propertyType: "select",
+        label: "Sales location:",
+        name: "salesLocation",
+        list: [
+          {_id:0, name: "Shop", value: 0},
+          {_id:1, name: "Network", value: 1},
+        ] 
+      },
+      { 
+        _id: 20,
+        propertyType: "select",
+        label: "Payment method:",
+        name: "paymentMethod", 
+        list: [
+          {_id:0, name: "Cash", value: 0},
+          {_id:1, name: "Transfer", value: 1},
+          {_id:2, name: "TPV", value: 2},
+        ] 
+      },
+      { 
+        _id: 21,
+        propertyType: "select",
+        label: "Prov. payment method:",
+        name: "provPaymentMethod", 
+        list: [
+          {_id:0, name: "Cash", value: 0},
+          {_id:1, name: "Transfer", value: 1},
+          {_id:2, name: "TPV", value: 2},
+        ] 
+      },
     ],
   },
   reducers: {

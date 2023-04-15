@@ -30,8 +30,8 @@ export default function ProductsFilter(props) {
     };
 
     return (
-        <div style={styles.productsFilter}>
-            <div style={styles.productsFilter__filterWrapper}>
+        <View style={styles.productsFilter}>
+            <View style={styles.productsFilter__filterWrapper}>
                 <Accordion 
                         title="Filters" 
                         headerIcon="filter"
@@ -109,18 +109,14 @@ export default function ProductsFilter(props) {
                         onChange={(change) => updateFilter(change - 1, "size")}
                     />
                     </>)} />
-            </div>
-        </div>
+            </View>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
         fontSize: 20
-    },
-    productsFilter__filterWrapper: {
-        border: "1px solid",
-        borderRadius: 5, 
     },
     productsFilter__filtersHeader: {
         display: "flex",
@@ -134,7 +130,6 @@ const styles = StyleSheet.create({
         display: "flex",
         flexWrap: "wrap",
         gap: 10,
-        minHeight: 300,
         overflow: "hidden",
         marginLeft: 10,
         marginRight: 10,

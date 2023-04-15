@@ -3,6 +3,9 @@
     "name": "catalog",
     "slug": "catalog",
     "version": "1.0.0",
+    "androidStatusBar": {
+      "backgroundColor": "#000000"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,13 +24,24 @@
       "supportsTablet": true
     },
     "android": {
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.brais.catalog"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d0ba7c42-ec3d-4efd-8634-6d9f71aa8293"
+      }
     }
   }
 }

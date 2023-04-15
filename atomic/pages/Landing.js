@@ -25,9 +25,9 @@ export default function Landing({navigation}) {
       />
       <Button
         style={styles.buttonLink}
-        title="Products"
+        title="Playground"
         accessibilityLabel="Filter and browse products"
-        onPress={() => navigation.navigate('Products')}
+        onPress={() => navigation.navigate('Playground')}
       />
     </SafeAreaView>
   )

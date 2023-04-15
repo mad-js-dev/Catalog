@@ -109,6 +109,9 @@ Use the `BLANK_README.md` to get started.
 * [![React-Native][React-Native]][React-Native-url]
 * [![Expo][Expo]][Expo-url]
 * [![Redux][Redux]][Redux-url]
+* [![Nodejs][Nodejs]][Nodejs-url]
+* [![Expressjs][Expressjs]][Expressjs-url]
+* [![Mongodb][Mongodb]][Mongodb-url]
 
 
 <!-- GETTING STARTED -->
@@ -257,5 +260,11 @@ Use this space to list resources you find helpful and would like to give credit 
 [React-Native-url]: https://reactnative.dev/
 [Expo]: https://img.shields.io/badge/Expo-20232A?style=for-the-badge&logo=expo&logoColor=FFFFFF
 [Expo-url]: https://expo.dev/
-[Redux]: https://img.shields.io/badge/React%20Native-764abc?style=for-the-badge&logo=redux&logoColor=FFFFFF
+[Redux]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
 [Redux-url]: https://redux.js.org/
+[Nodejs]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[Nodejs-url]:[Nodejs-url]:[Nodejs]:
+[Expressjs] = https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
+[Expressjs-url]: https://expressjs.com/
+[Mongodb] = https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
+[Mongodb-url]: https://www.mongodb.com/
