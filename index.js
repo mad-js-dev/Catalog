@@ -18,7 +18,7 @@ let productTemplate = {
   dateBought: "",
   dateSold: "",
   ownerName: "",
-  state: -1,
+  state: 0,
   category: -1,
   subcategory: -1,
   designer: -1,
@@ -32,11 +32,12 @@ let productTemplate = {
   priceBought: "",
   minPrice: "",
   price: "",
-  paymentLocation: "",
-  paymentMethod: "",
+  paymentLocation: -1,
+  paymentMethod: -1,
   paymentDate: "",
   paymentInvoice: "",
   image: "",
+  provPaymentMethod: -1,
 };
 
 async function run() {
@@ -100,7 +101,7 @@ async function updateProduct(req, res) {
   let queryResult =  await database
     .collection("products")
     .updateOne(
-        {_id: new ObjectId(req.body._id)}, { $set: set})  
+        {_id: new ObjectId(req.body._id)}, { $set: set})
   console.log(queryResult)
   const result = await getAllProducts()
   res.send(result)
@@ -111,8 +112,8 @@ async function deleteProduct(req, res) {
   let queryResult =  await database
     .collection("products")
     .deleteOne(
-        {_id: new ObjectId(req.body._id)}, 
-    )  
+        {_id: new ObjectId(req.body._id)},
+    )
   console.log(queryResult)
   const result = await getAllProducts()
   res.send(result)
@@ -123,11 +124,11 @@ const getAllProducts = async () => {
     .collection("products")
     .find({})
     .toArray()
-    console.log(productsQueryResult);
+    //console.log(productsQueryResult);
     return productsQueryResult;
 }
+
 const testConnection = async () => {
-    // Query for a movie that has the title 'The Room'
     const query = {};
     const options = {};
     const result = await settings.findOne(query, options);
