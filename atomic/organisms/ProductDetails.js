@@ -78,7 +78,7 @@ export default function Playground(props) {
         let result;
         if(props.id == "") {
             result = (
-            <View style={processStyle([processStyle(styles.productsDetails), styles.productsDetails_empty])}>
+            <View style={processStyle(styles.productsDetails_empty)}>
                 <View style={processStyle(styles.productsDetails_noResults)}>
                     <Ionicons name="md-close-sharp" size={56} color="#555"/>
                     <Text>No product selected</Text>
@@ -96,7 +96,6 @@ export default function Playground(props) {
                   />
                 </View>
                 <View style={processStyle(styles.productDataContainer)}>
-                    <Text>Product details:</Text>
                     <View style={processStyle(styles.productDataContainer__formWrapper)}>
                         <Input 
                             type="text" 
@@ -288,19 +287,19 @@ const useStyles = CreateResponsiveStyle(
 {
     productsDetails: {
         display: "flex",
-        backgroundColor: "#FFF",
         height: "86vh",  
-        paddingVertical: "100px",
         flexWrap: "wrap",
         maxheight: "100%"
     },
     productsDetails_empty: {
-        flexDirection: "column",
-        justifyContent: "center",
-        textAlign: "center",
+        display: "flex",
+        flexWrap: "wrap",
+        maxheight: "100%"
     },
     productsDetails_noResults: {
         color: "#333",
+        marginLeft: "auto",
+        marginRight: "auto",
     },
     pictureContainer: {
         flexBasis: 1,
@@ -312,14 +311,7 @@ const useStyles = CreateResponsiveStyle(
         paddingRight: "50px",
     },
     image: {
-        //display: "block",
-        //width: 460,
-        //height: "100%",
         height: 250,
-        //maxHeight: "300px",
-        //minHeight: "calc(100vw / 3 * 2)",
-        //marginBottom: 0
-        //flex: 1,
         width: "100%",
     },
     h1: {
@@ -351,8 +343,6 @@ const useStyles = CreateResponsiveStyle(
     },
     productDataContainer: {
         paddingRight: 12,
-
-        
     },
     productDataContainer__formWrapper: {
       display: "flex",
@@ -365,12 +355,16 @@ const useStyles = CreateResponsiveStyle(
 {
     [minSize(DEVICE_SIZES.LG)]: {
         productsDetails: {
-            height: "80vh"
+            height: "80vh",
+            alignContent: "space-between",
+        },
+        productsDetails_empty: {
+            height: "86vh",  
+            justifyContent: "center",
+            textAlign: "center",
         },
         pictureContainer: {
-            //flexBasis: "content",
-            height: "40vh",
-            width: 450,
+            width: 420,
             order: 1,
         },
         image: {
@@ -383,16 +377,19 @@ const useStyles = CreateResponsiveStyle(
           //marginBottom: 0
        },
         paymentContainer: {
-            maxWidth: 450,
-            order: 2
+            maxWidth: 420,
+            order: 2,
+            paddingLeft: 0,
+            paddingRight: 0,
         },
         productDataContainer: {
-            width: "calc(100% - (450px + 40px))",
+            width: "50%",
             order: 3,
-            paddingBottom: 0
+            paddingBottom: 0,
+            paddingRight: 0,
+
         },
         image: {
-            maxWidth: "450px",
             maxHeight: "300px",
             minHeight: "33vh",
         }

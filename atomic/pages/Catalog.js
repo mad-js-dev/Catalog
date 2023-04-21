@@ -160,26 +160,34 @@ const useStyles = CreateResponsiveStyle(
         width: Dimensions.get('window').width,
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
         justifyContent: "space-between",
       },
     },
     [minSize(DEVICE_SIZES.LG)]: {
       catalog__contentWrapper: {
         width: "100%",
+        alignItems: "start",
+        gap: 20,
         maxWidth: 1200,
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+        paddingTop: "5vh"
       },
       catalog__contentWrapper_open: {
         width: "100%",
+        alignItems: "start",
+        gap: 20,
         maxWidth: 1200,
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+        paddingTop: "5vh"
       },
       catalogFilters: {
         width: "25%",
+        height: "80vh",
         backgroundColor: "#CCC",
+        overflowX: "hidden",
+        overflowY: "scroll",
       },
       catalogContent: {
         width: "75%",
