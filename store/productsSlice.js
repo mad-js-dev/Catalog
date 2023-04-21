@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 // Slice
 let testServer = false
-const serverAdress = (testServer) ? "http://localhost:80": "http://192.168.1.130:80";
+const serverAdress = (testServer) ? "http://192.168.1.130": "http://192.168.1.130:80";
 console.log(serverAdress)
 
 export const readProducts = createAsyncThunk('read/products', async (dispatch, getState) => {
