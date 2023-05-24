@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 // Slice
-let testServer = true
+let testServer = false
 const serverAdress = (testServer) ? "http://192.168.1.130:80": "http://13.39.95.173:80";
 console.log(serverAdress)
 

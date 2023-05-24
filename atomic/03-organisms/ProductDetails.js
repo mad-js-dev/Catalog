@@ -93,7 +93,7 @@ export default function Playground(props) {
                 <View style={processStyle(styles.pictureContainer)}>
                     <Image
                         style={processStyle(styles.image)}
-                        source={(product.image == '' ) ? {uri: "https://fakeimg.pl/600x400/CCCCCC/"} : "http://192.168.1.130:80/files/" + product.image}
+                        source={(product.image == '' ) ? {uri: "https://fakeimg.pl/600x400/CCCCCC/"} : "http://13.39.95.173:80/files/" + product.image}
                         resizeMeode="contain"
                     />
                     <Pressable 
