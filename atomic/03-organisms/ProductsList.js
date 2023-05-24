@@ -3,7 +3,7 @@ import { TouchableHighlight, Image, Text, View, FlatList} from "react-native";
 import { useSelector } from "react-redux";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { CreateResponsiveStyle, DEVICE_SIZES, useDeviceSize, maxSize, minSize } from 'rn-responsive-styles'
-import { processStyle } from '../helpers/styles'
+import { processStyle } from '../00-helpers/styles'
 
 export default function ProductsList(props) { 
   const styles = useStyles()
@@ -16,6 +16,7 @@ export default function ProductsList(props) {
 
   const Item = ({ id, name, price, image }) => {
     console.log('fuuu', id)
+    console.log(image)
     return (
         <TouchableHighlight
             activeOpacity={0.6}
@@ -25,7 +26,7 @@ export default function ProductsList(props) {
             <View style={(props.selectable && id == props.selectedId)?processStyle(styles.listItem_selected):processStyle(styles.listItem)}>
               <Image
                 style={processStyle(styles.listItem__image)}
-                source={{uri: "https://fakeimg.pl/600x400/AAAAAA/"}}
+                source={(image == '' ) ? {uri: "https://fakeimg.pl/600x400/CCCCCC/"} : "http://192.168.1.130:80/files/" + image}
                 />
               <View
                 style={processStyle(styles.listItem__contentWrapper)}

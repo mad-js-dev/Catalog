@@ -1,7 +1,7 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { CreateResponsiveStyle, DEVICE_SIZES, useDeviceSize, maxSize, minSize } from 'rn-responsive-styles'
-import { processStyle } from '../helpers/styles'
+import { processStyle } from '../00-helpers/styles'
 
 export default function Menu(props) { 
     const styles = useStyles()

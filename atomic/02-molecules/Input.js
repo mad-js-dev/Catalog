@@ -4,7 +4,7 @@ import * as Device from 'expo-device';
 import {Picker} from '@react-native-picker/picker';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { CreateResponsiveStyle, DEVICE_SIZES, useDeviceSize, maxSize, minSize } from 'rn-responsive-styles'
-import { processStyle } from '../helpers/styles'
+import { processStyle } from '../00-helpers/styles'
 
 export default function Input(props) { 
   const styles = useStyles()
@@ -149,10 +149,10 @@ const useStyles = CreateResponsiveStyle(
     textInput: {
       border: "1px solid #767676",
       borderRadius: 2,
-      height: 40,
+      height: 35,
     },
     dateInput: {
-      height: 40,
+      height: 35,
       paddingLeft: 10,
     },
     numberInput: {

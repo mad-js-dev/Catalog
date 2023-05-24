@@ -10,10 +10,10 @@ import { readProducts } from './store/productsSlice'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Landing from "./atomic/pages/Landing";
-import Catalog from "./atomic/pages/Catalog";
-import Playground from "./atomic/pages/Playground";
-import Test from "./atomic/pages/Test";
+import Landing from "./atomic/04-pages/Landing";
+import Catalog from "./atomic/04-pages/Catalog";
+import TakePicture from "./atomic/04-pages/TakePicture";
+import Test from "./atomic/04-pages/Test";
 
 const Stack = createNativeStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -59,9 +59,9 @@ const Content = () => {
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Landing">
             <Stack.Screen name="Test" component={Test} />
-            <Stack.Screen name="Playground" component={Playground} />
             <Stack.Screen name="Landing" component={Landing} />
             <Stack.Screen name="Catalog" component={Catalog} />
+            <Stack.Screen name="TakePicture" component={TakePicture} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

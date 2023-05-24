@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 // Slice
-let testServer = false
+let testServer = true
 const serverAdress = (testServer) ? "http://192.168.1.130:80": "http://13.39.95.173:80";
 console.log(serverAdress)
 
@@ -11,7 +11,7 @@ export const readProducts = createAsyncThunk('read/products', async (dispatch, g
   return await axios.get(serverAdress+"/api/getProducts")
   .then((res) => {
     console.log(res)
-      return res.data
+    return res.data
   });
 });
 
@@ -22,7 +22,6 @@ export const createProduct = createAsyncThunk('create/product', async (dispatch,
       return res.data
   });
 });
-
 
 export const updateProduct = createAsyncThunk('update/product', async (dispatch, getState) => {
   console.log('Update product store call', dispatch)
@@ -37,6 +36,16 @@ export const deleteProduct = createAsyncThunk('delete/product', async (dispatch,
   console.log('Delete product store call', {_id: dispatch})
   return await axios.post(serverAdress+"/api/deleteProduct", {_id: dispatch})
     .then((res) => {
+      return res.data
+    });
+});
+
+export const uploadPicture = createAsyncThunk('update/picture', async (dispatch, getState) => {
+  console.log('Upload picture')
+
+  return await axios.post(serverAdress+"/api/uploadPicture", dispatch)
+    .then((res) => {
+      console.log(res.data)
       return res.data
     });
 });
@@ -315,6 +324,7 @@ const productsSlice = createSlice({
         ] 
       },
     ],
+    productId: ''
   },
   reducers: {
     setFilter:  (state, action) => {
@@ -326,6 +336,9 @@ const productsSlice = createSlice({
       }
       */
     },
+    setProductId: (state, action) => {
+      state.productId = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
@@ -348,7 +361,7 @@ const productsSlice = createSlice({
     }
 });
 
-export const { setFilter, getFilteredProducts } = productsSlice.actions
+export const { setFilter, setProductId, getFilteredProducts } = productsSlice.actions
 
 export default productsSlice.reducer
 

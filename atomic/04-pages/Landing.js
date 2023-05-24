@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Image, Button, SafeAreaView, StyleSheet, StatusBar, View } from 'react-native';
 import { readProducts } from '../../store/productsSlice'
 import { CreateResponsiveStyle, DEVICE_SIZES, useDeviceSize, minSize } from 'rn-responsive-styles'
-import { processStyle } from '../helpers/styles'
+import { processStyle } from '../00-helpers/styles'
 
 export default function Landing({navigation}) { 
   const styles = useStyles()

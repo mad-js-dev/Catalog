@@ -1,17 +1,19 @@
 import { React, Component, useState, useEffect } from "react";
-import { StyleSheet, Image, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Image, Text, View, ScrollView, Pressable } from "react-native";
 import { useSelector , useDispatch } from "react-redux";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { updateProduct } from '../../store/productsSlice'
-import { useIsFocused } from '@react-navigation/native'
+import { NavigationContainer, useIsFocused } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { CreateResponsiveStyle, DEVICE_SIZES, useDeviceSize, minSize } from 'rn-responsive-styles'
-import { processStyle } from '../helpers/styles'
+import { processStyle } from '../00-helpers/styles'
 
-import Input from "../molecules/Input";
-import Accordion from "../molecules/Accordion";
+import Input from "../02-molecules/Input";
+import Accordion from "../02-molecules/Accordion";
 
 export default function Playground(props) { 
+    console.log(props)
     const styles = useStyles()
     const dispatch = useDispatch();
     const isFocused = useIsFocused()
@@ -89,11 +91,18 @@ export default function Playground(props) {
             result = (
             <View style={processStyle(styles.productsDetails)}>
                 <View style={processStyle(styles.pictureContainer)}>
-                  <Image
-                      style={processStyle(styles.image)}
-                      source={{uri: "https://fakeimg.pl/600x400/CCCCCC/"}}
-                      resizeMeode="contain"
-                  />
+                    <Image
+                        style={processStyle(styles.image)}
+                        source={(product.image == '' ) ? {uri: "https://fakeimg.pl/600x400/CCCCCC/"} : "http://192.168.1.130:80/files/" + product.image}
+                        resizeMeode="contain"
+                    />
+                    <Pressable 
+                        title={ "Create product" }
+                        style={processStyle(styles.image__picture_button)}
+                        onPress={() => props.onPress("takePicture")}
+                    >   
+                       <Ionicons name="camera-outline" size={24} color="white" />
+                    </Pressable>
                 </View>
                 <View style={processStyle(styles.productDataContainer)}>
                     <View style={processStyle(styles.productDataContainer__formWrapper)}>
@@ -314,6 +323,15 @@ const useStyles = CreateResponsiveStyle(
         height: 250,
         width: "100%",
     },
+    image__picture_button: {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        padding: 3,
+        border: "2px solid #FFF",
+        borderRadius: 3,
+        margin: 6,
+    },
     h1: {
         fontSize: "3rem",
     },
@@ -392,7 +410,10 @@ const useStyles = CreateResponsiveStyle(
         image: {
             maxHeight: "300px",
             minHeight: "33vh",
-        }
+        },
+        image__picture_button: {
+            display: "none",
+        },
     }
 } 
 );

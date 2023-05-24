@@ -5,8 +5,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { fetchSchema } from '../../store/productsSlice'
 import { useIsFocused } from '@react-navigation/native'
 
-import Input from "../molecules/Input";
-import Accordion from "../molecules/Accordion";
+import Input from "../02-molecules/Input";
+import Accordion from "../02-molecules/Accordion";
 
 export default function ProductsFilter(props) {    
     let settings = useSelector(state => state.productsList.settings)
