@@ -39,7 +39,8 @@
     "react-native-screens": "~3.18.0",
     "react-native-web": "~0.18.9",
     "react-redux": "^8.0.5",
-    "rn-responsive-styles": "^2.1.0"
+    "rn-responsive-styles": "^2.1.0",
+    "expo-updates": "~0.15.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
