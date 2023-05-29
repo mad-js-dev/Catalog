@@ -36,9 +36,15 @@ async function run() {
     app.get('/api/getProducts', productQueries.readProducts)
     app.post('/api/updateProduct', jsonParser, productQueries.updateProduct)
     app.post('/api/deleteProduct', jsonParser, productQueries.deleteProduct)
+    
     app.post("/api/uploadPicture", productsImages.uploadFiles);
     app.get("/files", productsImages.getListFiles);
     app.get("/files/:name", productsImages.download);
+
+    app.get('/download', function(req, res){
+      const file = `./Catalog-v0.1.apk`;
+      res.download(file); // Set disposition and send it.
+    });
 
     app.listen(port, () => console.log('server is running at port ' + port));
   } finally {
