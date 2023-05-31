@@ -11,6 +11,7 @@ import { processStyle } from '../00-helpers/styles'
 
 import Input from "../02-molecules/Input";
 import Accordion from "../02-molecules/Accordion";
+import Images from '../../assets/Images.js';
 
 export default function Playground(props) { 
     console.log(props)
@@ -93,7 +94,7 @@ export default function Playground(props) {
                 <View style={processStyle(styles.pictureContainer)}>
                     <Image
                         style={processStyle(styles.image)}
-                        source={(product.image == '' ) ? {uri: "https://fakeimg.pl/600x400/CCCCCC/"} : "http://13.39.95.173:80/files/" + product.image}
+                        source={(product.image == '' ) ?  Images.noImage : {uri: "http://13.39.95.173:80/files/" + product.image}}
                         resizeMeode="contain"
                     />
                     <Pressable 
