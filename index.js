@@ -1,8 +1,10 @@
 
 const express = require('express');
+const https = require("https");
 var bodyParser = require('body-parser');
 const { MongoClient } = require("mongodb");
 const basicAuth = require('express-basic-auth')
+
 
 const dbConfig = require("./config/db");
 const path = require('path');
@@ -27,6 +29,12 @@ async function run() {
     productQueries = new productsQueries(database)
 
     const app = express();
+
+    https
+    .createServer(app)
+    .listen(process.env.PORT || 80, ()=>{
+      console.log('server is runing at port 80')
+    });
 
     var jsonParser = bodyParser.json()
     const port = process.env.PORT || 80;
@@ -76,7 +84,7 @@ async function run() {
 
     app.use(express.static('web-build'))
 
-    app.listen(port, () => console.log('server is running at port ' + port));
+    //app.listen(port, () => console.log('server is running at port ' + port));
   } finally {
     //await client.close();
   }
