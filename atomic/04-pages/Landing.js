@@ -10,7 +10,7 @@ export default function Landing({navigation}) {
   const dispatch = useDispatch()
 
  const downloadApp = () => {
-		fetch('http://localhost:80/download')
+		fetch('http://13.39.95.173:80/download')
     .then(response => {
       response.blob().then(blob => {
         let url = window.URL.createObjectURL(blob);
