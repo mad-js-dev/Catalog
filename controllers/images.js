@@ -6,7 +6,7 @@ const GridFSBucket = require("mongodb").GridFSBucket;
 
 const url = dbConfig.url;
 
-const baseUrl = "http://localhost:80/files/";
+const baseUrl = "https://localhost:80/files/";
 
 const mongoClient = new MongoClient(url);
 

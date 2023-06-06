@@ -25,7 +25,7 @@ async function run() {
     database = await client.db(dbConfig.database)
 
     settings = database.collection("settings")
-    products = database.collection("products")
+    products = database.collection("products")  
     productQueries = new productsQueries(database)
 
     const app = express();

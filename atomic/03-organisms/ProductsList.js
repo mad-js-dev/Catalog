@@ -27,7 +27,7 @@ export default function ProductsList(props) {
             <View style={(props.selectable && id == props.selectedId)?processStyle(styles.listItem_selected):processStyle(styles.listItem)}>
               <Image
                 style={processStyle(styles.listItem__image)}
-                source={(image == '' ) ?  Images.noImage : "http://13.39.95.173:80/files/" + image}
+                source={(image == '' ) ?  Images.noImage : "https://13.39.95.173:80/files/" + image}
                 />
               <View
                 style={processStyle(styles.listItem__contentWrapper)}
