@@ -2,6 +2,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 const { MongoClient } = require("mongodb");
+const basicAuth = require('express-basic-auth')
 
 const dbConfig = require("./config/db");
 const path = require('path');
@@ -26,11 +27,38 @@ async function run() {
     productQueries = new productsQueries(database)
 
     const app = express();
+
     var jsonParser = bodyParser.json()
     const port = process.env.PORT || 80;
-    app.use(express.static('web-build'))
-
+    
     app.use(cors())
+    
+    
+
+    app.get('/', (req, res, next) => {
+
+      // -----------------------------------------------------------------------
+      // authentication middleware
+    
+      const auth = {login: 'hedy', password: 'admin'} // change this
+    
+      // parse login and password from headers
+      const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
+      const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':')
+    
+      // Verify login and password are set and correct
+      if (login && password && login === auth.login && password === auth.password) {
+        // Access granted...
+        return next()
+      }
+    
+      // Access denied...
+      res.set('WWW-Authenticate', 'Basic realm="401"') // change this
+      res.status(401).send('Authentication required.') // custom message
+    
+      // -----------------------------------------------------------------------
+    
+    })
 
     app.get('/api/createProduct', productQueries.createProduct)
     app.get('/api/getProducts', productQueries.readProducts)
@@ -45,6 +73,8 @@ async function run() {
       const file = `./Catalog-v0.1.apk`;
       res.download(file); // Set disposition and send it.
     });
+
+    app.use(express.static('web-build'))
 
     app.listen(port, () => console.log('server is running at port ' + port));
   } finally {
